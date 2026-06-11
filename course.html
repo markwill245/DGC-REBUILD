@@ -476,67 +476,69 @@
         </div>
     </nav>
     <!-- COURSE -->
-    <section id="course" class="min-h-screen px-4 py-20 bg-[#132419]">
-        <div class="max-w-7xl mx-auto">
+    <section id="course" class="min-h-screen bg-[#132419] px-4 py-20">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
 
-            <div class="text-center mb-12">
-                <p class="text-gold text-[10px] uppercase tracking-[0.4em] font-bold mb-4">
-                    Course Guide
-                </p>
-                <h2 class="serif text-5xl md:text-7xl text-white italic mb-6">
-                    The 18 Holes
-                </h2>
-                <button onclick="toggleScorecard()" class="view-scorecard-btn">
-                    <span>View Full Scorecard</span>
-                </button>
+            <!-- LEFT: HOLE SELECTOR -->
+            <div class="lg:w-[38%] bg-[#f9f7f2] p-6 md:p-8 rounded-sm border border-gray-200/40 shadow-sm">
+                <div class="mb-6">
+                    <p class="text-[10px] uppercase tracking-[0.35em] text-[#C5A367] font-bold mb-3">
+                        Course Guide
+                    </p>
+                    <h2 class="serif text-5xl md:text-6xl mb-4 text-[#132419]">The 18 Holes</h2>
+
+                    <button onclick="toggleScorecard()" class="view-scorecard-btn">
+                        <span>View Full Scorecard</span>
+                    </button>
+                </div>
+
+                <div id="hole-nav-container"
+                    class="grid grid-cols-2 gap-3 max-h-[720px] overflow-y-auto custom-scrollbar pr-1">
+                </div>
             </div>
 
-            <div class="bg-[#0D1712] border border-[#C5A367]/20 shadow-2xl overflow-hidden">
+            <!-- RIGHT: HOLE DISPLAY -->
+            <div class="lg:w-[62%] bg-forest rounded shadow-2xl overflow-hidden">
 
-                <div class="h-[360px] md:h-[560px] bg-black relative overflow-hidden">
+                <div class="h-72 md:h-[460px] bg-black relative overflow-hidden">
+                    <div id="h-gallery" class="flex gap-2 p-3 bg-[#08110D] border-b border-[#C5A367]/20 relative z-20">
+                    </div>
+
                     <img id="h-img" src="images/hole1.webp"
                         class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
                         alt="Dudley Golf Club course hole image">
 
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#132419] via-[#132419]/30 to-transparent"></div>
-
-                    <div class="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-10">
-                        <div class="flex justify-between items-end gap-6 border-b border-white/10 pb-6">
-                            <div>
-                                <span id="h-num"
-                                    class="serif text-6xl md:text-8xl text-gold italic leading-none"></span>
-                                <h3 id="h-name" class="serif text-5xl md:text-7xl text-white italic tracking-wide mt-2">
-                                </h3>
-                            </div>
-                            <div class="text-right shrink-0">
-                                <p id="h-par-si" class="serif text-3xl md:text-4xl text-gold italic"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-[#08110D] border-y border-[#C5A367]/20 p-4">
-                    <div id="h-gallery" class="flex gap-3 overflow-x-auto custom-scrollbar"></div>
-                </div>
-
-                <div class="bg-[#0D1712] p-4 md:p-6 border-b border-[#C5A367]/20">
-                    <div id="hole-nav-container" class="flex gap-3 overflow-x-auto custom-scrollbar pb-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#132419]/80 via-[#132419]/20 to-transparent">
                     </div>
                 </div>
 
                 <div class="p-8 md:p-12 bg-forest">
-                    <div class="grid grid-cols-3 gap-3 mb-10">
-                        <div class="bg-white/5 border border-white/5 p-5 text-center">
+                    <div class="flex justify-between items-start mb-8 border-b border-white/10 pb-6">
+                        <div>
+                            <span id="h-num" class="serif text-6xl text-gold italic"></span>
+                            <h3 id="h-name" class="serif text-5xl md:text-6xl text-white mt-2 italic tracking-wide">
+                            </h3>
+                        </div>
+
+                        <div class="text-right">
+                            <p id="h-par-si" class="serif text-3xl text-gold italic"></p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 mb-10">
+                        <div class="bg-white/5 p-4 text-center">
                             <p class="text-[9px] uppercase tracking-widest text-gray-400 mb-1">White</p>
-                            <p id="h-white" class="serif text-2xl text-white"></p>
+                            <p id="h-white" class="serif text-xl text-white"></p>
                         </div>
-                        <div class="bg-white/5 border border-white/5 p-5 text-center">
+
+                        <div class="bg-white/5 p-4 text-center">
                             <p class="text-[9px] uppercase tracking-widest text-yellow-400 mb-1">Yellow</p>
-                            <p id="h-yellow" class="serif text-2xl text-yellow-400"></p>
+                            <p id="h-yellow" class="serif text-xl text-yellow-400"></p>
                         </div>
-                        <div class="bg-white/5 border border-white/5 p-5 text-center">
+
+                        <div class="bg-white/5 p-4 text-center">
                             <p class="text-[9px] uppercase tracking-widest text-red-500 mb-1">Red</p>
-                            <p id="h-red" class="serif text-2xl text-red-500"></p>
+                            <p id="h-red" class="serif text-xl text-red-500"></p>
                         </div>
                     </div>
 
