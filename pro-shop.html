@@ -170,6 +170,19 @@
                 max-width: 100% !important;
             }
         }
+
+        .pro-shop-layout {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .pro-shop-layout {
+                display: block !important;
+            }
+        }
     </style>
 </head>
 
@@ -238,13 +251,12 @@
                 </h1>
             </div>
 
-            <div style="display:grid; grid-template-columns:420px 1fr; gap:80px; align-items:start;">
+            <div class="pro-shop-layout">
 
                 <div>
                     <h2 class="serif text-2xl text-[#132419] mb-4">
                         Head Professional Richard Prophet
                     </h2>
-
                     <div
                         style="background:#132419; padding:4px; box-shadow:0 4px 12px rgba(0,0,0,.25); width:420px; max-width:100%;">
                         <img src="/DGC-REBUILD/images/pro.webp" alt="Head Professional Richard Prophet"
@@ -298,17 +310,15 @@
                         </a>
                     </div>
                 </div>
-
             </div>
+        </div>
 
-            <div
-                class="flex justify-center items-center gap-10 py-12 text-gold text-sm uppercase tracking-[0.2em] border-t border-gray-100 mt-16">
-                <a href="https://www.facebook.com/DudleyGolfClub"
-                    class="hover:text-[#132419] transition-all">Facebook</a>
-                <a href="https://www.instagram.com/dudleygolfclub"
-                    class="hover:text-[#132419] transition-all">Instagram</a>
-                <a href="https://x.com/dudleygolfclub" class="hover:text-[#132419] transition-all">X / Twitter</a>
-            </div>
+        <div
+            class="flex justify-center items-center gap-10 py-12 text-gold text-sm uppercase tracking-[0.2em] border-t border-gray-100 mt-16">
+            <a href="https://www.facebook.com/DudleyGolfClub" class="hover:text-[#132419] transition-all">Facebook</a>
+            <a href="https://www.instagram.com/dudleygolfclub" class="hover:text-[#132419] transition-all">Instagram</a>
+            <a href="https://x.com/dudleygolfclub" class="hover:text-[#132419] transition-all">X / Twitter</a>
+        </div>
 
         </div>
     </section>
