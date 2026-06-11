@@ -99,7 +99,7 @@
 
     <!-- NAV -->
     <nav
-        class="sticky top-0 w-full z-[60] px-8 py-4 flex justify-between items-center text-white nav-blur border-b border-white/10">
+        class="relative w-full z-[60] px-8 py-4 flex justify-between items-center text-white nav-blur border-b border-white/10">
         <a href="index.html" class="flex flex-col relative z-[100]">
             <span class="serif text-2xl tracking-widest leading-none">DUDLEY</span>
             <span class="text-[8px] tracking-[0.4em] uppercase text-[#C5A367]">Golf Club Est. 1893</span>
@@ -136,11 +136,12 @@
     </nav>
 
     <!-- PRO SHOP -->
-    <section id="pro-shop" class="min-h-screen bg-[#f9f7f2] py-24 px-4 flex items-center">
-        <div class="max-w-7xl mx-auto w-full">
+    <section id="pro-shop" class="bg-[#f9f7f2] py-24 px-4">
+        <div class="max-w-7xl mx-auto">
 
-            <div class="text-center mb-16 flex flex-col items-center">
-                <p class="text-[#C5A367] text-[10px] uppercase tracking-[0.4em] font-bold mb-4">The Professional Shop
+            <div class="text-center mb-16">
+                <p class="text-[#C5A367] text-[10px] uppercase tracking-[0.4em] font-bold mb-4">
+                    The Professional Shop
                 </p>
                 <h1 class="serif text-4xl md:text-6xl text-[#132419] pb-4 inline-block"
                     style="border-bottom:3px solid #C5A367;">
@@ -148,76 +149,77 @@
                 </h1>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-16 items-start"></div>
+            <div style="display:grid; grid-template-columns:420px 1fr; gap:80px; align-items:start;">
 
-            <!-- IMAGE SIDE -->
-            <div>
-                <h2 class="serif text-2xl text-[#132419] mb-4">
-                    Head Professional Richard Prophet
-                </h2>
+                <div>
+                    <h2 class="serif text-2xl text-[#132419] mb-4">
+                        Head Professional Richard Prophet
+                    </h2>
 
-                <div
-                    style="background:#132419; padding:4px; box-shadow:0 4px 12px rgba(0,0,0,.25); width:520px; max-width:100%;">
-                    <img src="/DGC-REBUILD/images/pro.webp" alt="Head Professional Richard Prophet"
-                        style="display:block; width:100%; height:auto;">
+                    <div
+                        style="background:#132419; padding:4px; box-shadow:0 4px 12px rgba(0,0,0,.25); width:420px; max-width:100%;">
+                        <img src="/DGC-REBUILD/images/pro.webp" alt="Head Professional Richard Prophet"
+                            style="display:block; width:100%; height:auto;">
+                    </div>
                 </div>
+
+                <div class="space-y-8" style="padding-top:48px;">
+                    <div class="space-y-2">
+                        <h3 class="text-gold text-[10px] uppercase tracking-[0.4em] font-bold">The Academy</h3>
+                        <h2 class="serif text-4xl md:text-6xl text-[#132419] leading-tight">Expertise & Equipment</h2>
+                    </div>
+
+                    <p class="serif text-xl md:text-2xl italic text-[#132419]/70 leading-relaxed">
+                        "Our Head professional is dedicated to helping you enjoy the game. Whether it's a quick bucket
+                        of balls or a full Round of Golf, he will provide a tour-level experience for every member."
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pt-4 items-start">
+                        <div class="border-l-2 border-[#C5A367] pl-7 pr-3 py-2">
+                            <h4 class="serif text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 text-[#132419]">
+                                Re-Grip Fitting
+                            </h4>
+                            <p class="text-[11px] text-gray-500 leading-relaxed">Only top brands used.</p>
+                        </div>
+
+                        <div class="border-l-2 border-[#C5A367] pl-7 pr-3 py-2">
+                            <h4 class="serif text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 text-[#132419]">
+                                Electric Buggies
+                            </h4>
+                            <p class="text-[11px] text-gray-500 leading-relaxed">Why not do it in style.</p>
+                        </div>
+
+                        <div class="border-l-2 border-[#C5A367] pl-7 pr-3 py-2">
+                            <h4 class="serif text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 text-[#132419]">
+                                Stockists
+                            </h4>
+                            <p class="text-[11px] text-gray-500 leading-relaxed">Titleist / Ping / FJ / Galvin Green</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex flex-row flex-wrap items-center gap-3">
+                        <a href="https://www.dudleygolfclub.com/visitorbooking/"
+                            class="bg-forest text-[#C5A367] px-6 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-gold hover:text-[#132419] transition-all duration-300">
+                            Book a Tee Time
+                        </a>
+
+                        <a href="pro-shop.html"
+                            class="bg-forest text-[#C5A367] px-6 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-gold hover:text-[#132419] transition-all duration-300">
+                            View My Stock
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- TEXT SIDE -->
-            <div class="pt-12 lg:pt-0 space-y-8">
-                <div class="space-y-2">
-                    <h3 class="text-gold text-[10px] uppercase tracking-[0.4em] font-bold">The Academy</h3>
-                    <h2 class="serif text-4xl md:text-6xl text-[#132419] leading-tight">Expertise & Equipment</h2>
-                </div>
-
-                <p class="serif text-xl md:text-2xl italic text-[#132419]/70 leading-relaxed">
-                    "Our Head professional is dedicated to helping you enjoy the game. Whether it's a quick bucket
-                    of balls or a full Round of Golf, he will provide a tour-level experience for every member."
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pt-4 items-start">
-                    <div class="border-l-2 border-[#C5A367] pl-7 pr-3 py-2">
-                        <h4 class="serif text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 text-[#132419]">
-                            Re-Grip Fitting
-                        </h4>
-                        <p class="text-[11px] text-gray-500 leading-relaxed">Only top brands used.</p>
-                    </div>
-
-                    <div class="border-l-2 border-[#C5A367] pl-7 pr-3 py-2">
-                        <h4 class="serif text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 text-[#132419]">
-                            Electric Buggies
-                        </h4>
-                        <p class="text-[11px] text-gray-500 leading-relaxed">Why not do it in style.</p>
-                    </div>
-
-                    <div class="border-l-2 border-[#C5A367] pl-7 pr-3 py-2">
-                        <h4 class="serif text-[12px] font-semibold uppercase tracking-[0.14em] mb-2 text-[#132419]">
-                            Stockists
-                        </h4>
-                        <p class="text-[11px] text-gray-500 leading-relaxed">Titleist / Ping / FJ / Galvin Green</p>
-                    </div>
-                </div>
-
-                <div class="pt-6 flex flex-row flex-wrap items-center gap-3">
-                    <a href="https://www.dudleygolfclub.com/visitorbooking/"
-                        class="bg-forest text-[#C5A367] px-6 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-gold hover:text-[#132419] transition-all duration-300">
-                        Book a Tee Time
-                    </a>
-
-                    <a href="pro-shop.html"
-                        class="bg-forest text-[#C5A367] px-6 py-3 text-[10px] uppercase tracking-widest font-bold hover:bg-gold hover:text-[#132419] transition-all duration-300">
-                        View My Stock
-                    </a>
-                </div>
+            <div
+                class="flex justify-center items-center gap-10 py-12 text-gold text-sm uppercase tracking-[0.2em] border-t border-gray-100 mt-16">
+                <a href="https://www.facebook.com/DudleyGolfClub"
+                    class="hover:text-[#132419] transition-all">Facebook</a>
+                <a href="https://www.instagram.com/dudleygolfclub"
+                    class="hover:text-[#132419] transition-all">Instagram</a>
+                <a href="https://x.com/dudleygolfclub" class="hover:text-[#132419] transition-all">X / Twitter</a>
             </div>
-        </div>
-
-        <div
-            class="flex justify-center items-center gap-10 py-12 text-gold text-sm uppercase tracking-[0.2em] border-t border-gray-100 mt-12">
-            <a href="https://www.facebook.com/DudleyGolfClub" class="hover:text-[#132419] transition-all">Facebook</a>
-            <a href="https://www.instagram.com/dudleygolfclub" class="hover:text-[#132419] transition-all">Instagram</a>
-            <a href="https://x.com/dudleygolfclub" class="hover:text-[#132419] transition-all">X / Twitter</a>
-        </div>
 
         </div>
     </section>
