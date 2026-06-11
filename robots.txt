@@ -1,0 +1,6 @@
+
+User-agent: *
+Allow: /
+
+
+Sitemap: https://dudley-golf-club.vercel.app/sitemap.xml
