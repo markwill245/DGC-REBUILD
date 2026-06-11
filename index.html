@@ -1701,15 +1701,52 @@
                 const el = document.getElementById("course-status");
                 if (!el) return;
 
+                const today = new Date().toISOString().slice(0, 10);
+                const override = JSON.parse(localStorage.getItem("courseStatusOverride") || "null");
+
+                // Manual closure only applies for the same date
+                if (override && override.date === today) {
+                    el.textContent = override.status;
+                    el.className = override.status === "Open"
+                        ? "text-green-400 font-bold uppercase"
+                        : "text-red-500 font-bold uppercase";
+                    return;
+                }
+
+                // Clear old override after midnight
+                localStorage.removeItem("courseStatusOverride");
+
                 const now = new Date();
                 const minutes = now.getHours() * 60 + now.getMinutes();
 
-                const open = minutes >= 480 && minutes <= 1072;
+                const open = minutes >= 420 && minutes <= 1140;
 
                 el.textContent = open ? "Open" : "Closed";
                 el.className = open
                     ? "text-green-400 font-bold uppercase"
                     : "text-red-500 font-bold uppercase";
+            }
+            function closeCourseToday() {
+                const today = new Date().toISOString().slice(0, 10);
+                localStorage.setItem("courseStatusOverride", JSON.stringify({
+                    date: today,
+                    status: "Closed"
+                }));
+                updateCourseStatus();
+            }
+
+            function openCourseToday() {
+                const today = new Date().toISOString().slice(0, 10);
+                localStorage.setItem("courseStatusOverride", JSON.stringify({
+                    date: today,
+                    status: "Open"
+                }));
+                updateCourseStatus();
+            }
+
+            function resetCourseStatus() {
+                localStorage.removeItem("courseStatusOverride");
+                updateCourseStatus();
             }
 
             function updateClock() {
