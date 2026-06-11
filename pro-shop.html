@@ -21,11 +21,16 @@
             --cream: #F9F7F2;
         }
 
+        html,
+        body {
+            overflow-x: hidden !important;
+            scroll-behavior: auto !important;
+        }
+
         body {
             font-family: 'Outfit', sans-serif;
             background: #132419;
             color: #fff;
-            overflow-x: hidden;
         }
 
         .serif {
@@ -65,20 +70,33 @@
 
         @media (max-width:768px) {
             nav {
-                position: fixed;
-                top: 0;
-                left: 0;
+                position: relative !important;
                 width: 100%;
                 z-index: 9999;
                 background: #132419 !important;
             }
 
             section {
-                padding-top: 8rem !important;
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
             }
 
             #nav-links {
                 background: #132419 !important;
+            }
+
+            #pro-shop {
+                min-height: auto !important;
+            }
+
+            #pro-shop>div>div:nth-child(2) {
+                display: block !important;
+            }
+
+            #pro-shop img {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
             }
         }
     </style>
