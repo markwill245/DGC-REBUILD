@@ -46,7 +46,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400;1,600&family=Outfit:wght@300;400;600&display=swap**&display=swap**"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400;1,600&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet">
 
     <!-- css -->
@@ -143,7 +143,7 @@
                 background-color: #132419 !important;
                 backdrop-filter: none !important;
                 -webkit-backdrop-filter: none !important;
-                position: fixed;
+                position: sticky;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -431,7 +431,7 @@
 
     <nav
         class="sticky top-0 w-full z-[60] px-8 py-4 flex justify-between items-center text-white nav-blur border-b border-white/10">
-        <a href="#" class="flex flex-col relative z-[100]">
+        <a href="index.html" class="flex flex-col relative z-[100]">
             <span class="serif text-2xl tracking-widest leading-none">DUDLEY</span>
             <span class="text-[8px] tracking-[0.4em] uppercase text-[#C5A367]">Golf Club Est. 1893</span>
         </a>
@@ -479,10 +479,10 @@
 
     <!-- COURSE -->
     <section id="course" class="min-h-screen bg-[#132419] px-4 py-20">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
+        <div class="max-w-7xl mx-auto flex flex-col xl:flex-row gap-10">
 
             <!-- LEFT: HOLE SELECTOR -->
-            <div class="lg:w-[38%] bg-[#f9f7f2] p-6 md:p-8 rounded-sm border border-gray-200/40 shadow-sm">
+            <div class="xl:w-[32%] bg-[#f9f7f2] p-6 md:p-8 rounded-sm border border-gray-200/40 shadow-sm">
                 <div class="mb-6">
                     <p class="text-[10px] uppercase tracking-[0.35em] text-[#C5A367] font-bold mb-3">
                         Course Guide
@@ -495,14 +495,14 @@
                 </div>
 
                 <div id="hole-nav-container"
-                    class="grid grid-cols-2 gap-3 max-h-[720px] overflow-y-auto custom-scrollbar pr-1">
+                    class="grid grid-cols-1 gap-3 max-h-[720px] overflow-y-auto custom-scrollbar pr-1">
                 </div>
             </div>
 
             <!-- RIGHT: HOLE DISPLAY -->
-            <div class="lg:w-[62%] bg-forest rounded shadow-2xl overflow-hidden">
+            <div class="xl:w-[68%] bg-forest rounded shadow-2xl overflow-hidden">
 
-                <div class="h-72 md:h-[460px] bg-black relative overflow-hidden">
+                <div class="h-[340px] md:h-[500px] bg-black relative overflow-hidden">
                     <div id="h-gallery" class="flex gap-2 p-3 bg-[#08110D] border-b border-[#C5A367]/20 relative z-20">
                     </div>
 
@@ -510,7 +510,8 @@
                         class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700"
                         alt="Dudley Golf Club course hole image">
 
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#132419]/80 via-[#132419]/20 to-transparent">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-[#132419]/85 via-[#132419]/20 to-transparent pointer-events-none">
                     </div>
                 </div>
 
@@ -555,8 +556,6 @@
             </div>
         </div>
     </section>
-
-    </main>
 
     <!-- PREMIUM LIGHTBOX (OUTSIDE MAIN) -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-6">
@@ -1173,11 +1172,19 @@
                     const div = document.createElement("div");
                     div.id = `h-${h.number}`;
                     div.className =
-                        "hole-card p-4 md:p-5 cursor-pointer border border-white/5 rounded bg-[#132419] min-h-[78px]";
+                        "hole-card group cursor-pointer border border-[#C5A367]/20 bg-[#132419] min-h-[86px] p-4 rounded-sm hover:border-[#C5A367] hover:bg-[#0D1712] transition-all duration-300";
 
                     div.innerHTML = `
-    <p class="text-gold font-bold text-xs">HOLE ${h.number}</p>
-    <p class="text-white text-sm truncate">${h.name}</p>
+    <div class="flex items-center justify-between gap-4">
+        <div>
+            <p class="text-[#C5A367] font-bold text-[10px] uppercase tracking-[0.3em] mb-2">Hole ${String(h.number).padStart(2, "0")}</p>
+            <p class="serif text-white text-2xl italic leading-none">${h.name}</p>
+        </div>
+        <div class="text-right shrink-0">
+            <p class="text-[#C5A367] text-[10px] uppercase tracking-[0.25em]">Par ${h.par}</p>
+            <p class="text-white/45 text-[10px] uppercase tracking-[0.2em]">SI ${h.si}</p>
+        </div>
+    </div>
 `;
                     div.onclick = () => setHole(h.number);
                     nav.appendChild(div);
@@ -1226,6 +1233,24 @@
                 });
             }
 
+
+            async function updateWeather() {
+                const apiKey = 'cee564ae83bb8bbba492593fd40dd2eb';
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=Dudley,UK&units=metric&appid=${apiKey}`;
+
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error('Weather fetch failed');
+                    const data = await response.json();
+                    const temp = Math.round(data.main.temp);
+                    const weather = document.getElementById('weather');
+                    if (weather) weather.textContent = `Dudley: ${temp}°C`;
+                } catch (error) {
+                    const weather = document.getElementById('weather');
+                    if (weather) weather.textContent = "Dudley: --°C";
+                }
+            }
+
             /* =========================
                STARTUP (ONE ENTRY POINT)
             ========================= */
@@ -1237,6 +1262,7 @@
 
                 setHole(1);
                 updateClock();
+                updateWeather();
                 setInterval(updateClock, 1000);
             });
 
@@ -1322,75 +1348,6 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT SCRIPTS WRAP-UP (Always placed at the very end of body) -->
-    <script>
-        // 1. Global Safety Net
-        window.addEventListener("error", e => {
-            console.log("JS Error caught:", e.message);
-        });
-    </script>
-
-    <!-- SANITY BRIDGE -->
-    <script type="module">
-        import { createClient } from 'https://esm.sh/@sanity/client';
-
-        const client = createClient({
-            projectId: 'c54r3a5t',
-            dataset: 'production',
-            apiVersion: '2026-05-29',
-            useCdn: true
-        });
-
-        async function loadProShop() {
-            const container = document.getElementById('pro-shop-container');
-            if (!container) return;
-
-            try {
-                const items = await client.fetch(`*[_type == "proshop"]`);
-                console.log("Pro Shop Items found:", items); // Check the console for this!
-
-                if (items.length > 0) {
-                    container.innerHTML = items.map(item => `
-    <div class="pro-shop-card border border-gray-200 p-6 rounded-xl hover:shadow-lg transition-shadow bg-white">
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">${item.name || item.title || 'Untitled Item'}</h3>
-        <p class="text-gray-600">${item.description || 'Professional golf equipment available now.'}</p>
-        <button class="mt-4 bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">View Details</button>
-    </div>
-`).join('');
-                } else {
-                    container.innerHTML = '<p>No pro shop items found.</p>';
-                }
-            } catch (err) {
-                console.error("Pro Shop load failed:", err);
-            }
-        }
-
-        loadProShop();
-    </script>
-    <script>
-        // Fetch live weather for Dudley
-        async function updateWeather() {
-            // Use a restricted API key that you have regenerated
-            const apiKey = 'cee564ae83bb8bbba492593fd40dd2eb';
-            const city = 'Dudley,UK';
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=Dudley,UK&units=metric&appid=${apiKey}`;
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('Weather fetch failed');
-                const data = await response.json();
-                const temp = Math.round(data.main.temp);
-                // Update the span we identified earlier
-                document.getElementById('weather').textContent = `Dudley: ${temp}°C`;
-            } catch (error) {
-                console.error("Could not fetch weather:", error);
-                document.getElementById('weather').textContent = "Dudley: --°C";
-            }
-        }
-
-        // Run when the page loads
-        updateWeather();
-    </script>
     <!-- RETURN HOME BUTTON -->
     <a href="index.html" aria-label="Return Home" style="
 position: fixed;
