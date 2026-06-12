@@ -1173,11 +1173,20 @@
                     const div = document.createElement("div");
                     div.id = `h-${h.number}`;
                     div.className =
-                        "hole-card p-4 md:p-5 cursor-pointer border border-white/5 rounded bg-[#132419] min-h-[78px]";
+                        "hole-card p-5 md:p-6 cursor-pointer border border-[#C5A367]/20 rounded bg-[#132419] min-h-[110px]";
 
                     div.innerHTML = `
-    <p class="text-gold font-bold text-xs">HOLE ${h.number}</p>
-    <p class="text-white text-sm truncate">${h.name}</p>
+    <p class="text-gold font-bold text-[10px] tracking-[0.25em] mb-1">
+        HOLE ${String(h.number).padStart(2, '0')}
+    </p>
+
+    <p class="text-white text-lg serif italic mb-2">
+        ${h.name}
+    </p>
+
+    <p class="text-white/50 text-[10px] uppercase tracking-widest">
+        Par ${h.par} • SI ${h.si}
+    </p>
 `;
                     div.onclick = () => setHole(h.number);
                     nav.appendChild(div);
