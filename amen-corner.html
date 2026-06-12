@@ -309,7 +309,16 @@
     </section>
 
     <!-- LIGHTBOX -->
-    <div id="lightbox" class="fixed inset-0 bg-black/95 z-[99999] hidden items-center justify-center p-6">
+    <div id="lightbox" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.95);
+z-index:999999;
+align-items:center;
+justify-content:center;
+padding:24px;
+">
         <button onclick="closeLightbox()"
             class="absolute top-6 right-8 text-white text-5xl hover:text-[#C5A367] transition duration-300">
             &times;
@@ -407,24 +416,12 @@
 
     <script>
         function openLightbox(src) {
-            alert("Lightbox opening");
-
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
 
-            if (!lightbox) {
-                alert("Lightbox div not found");
-                return;
-            }
-
-            if (!img) {
-                alert("Lightbox image not found");
-                return;
-            }
+            if (!lightbox || !img) return;
 
             img.src = src;
-
-            lightbox.classList.remove('hidden');
             lightbox.style.display = 'flex';
 
             document.body.style.overflow = 'hidden';
@@ -433,8 +430,10 @@
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
 
-            lightbox.classList.add('hidden');
-            lightbox.classList.remove('flex');
+            if (!lightbox) return;
+
+            lightbox.style.display = 'none';
+
             document.body.style.overflow = 'auto';
         }
 
@@ -489,7 +488,9 @@
 
             btn.addEventListener("click", e => {
                 e.stopPropagation();
-                nav.classList.contains("translate-x-full") ? openMenu() : closeMenu();
+                nav.classList.contains("translate-x-full")
+                    ? openMenu()
+                    : closeMenu();
             });
 
             document.querySelectorAll("#nav-links a").forEach(link => {
@@ -504,8 +505,10 @@
             try {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Weather fetch failed');
+
                 const data = await response.json();
                 const temp = Math.round(data.main.temp);
+
                 document.getElementById('weather').textContent = `Dudley: ${temp}°C`;
             } catch (error) {
                 document.getElementById('weather').textContent = "Dudley: --°C";
@@ -516,7 +519,19 @@
             initMenu();
             updateClock();
             updateWeather();
+
             setInterval(updateClock, 1000);
+
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox) {
+                lightbox.style.display = 'none';
+
+                lightbox.addEventListener('click', function (e) {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
         });
     </script>
 
