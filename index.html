@@ -552,7 +552,40 @@
         // Run when the page loads
         updateWeather();
     </script>
+    <script>
+        function initMenu() {
+            const btn = document.getElementById("menu-btn");
+            const nav = document.getElementById("nav-links");
 
+            if (!btn || !nav) return;
+
+            function closeMenu() {
+                nav.classList.add("translate-x-full");
+                nav.classList.remove("translate-x-0");
+                document.body.style.overflow = "auto";
+            }
+
+            function openMenu() {
+                nav.classList.remove("translate-x-full");
+                nav.classList.add("translate-x-0");
+                document.body.style.overflow = "hidden";
+            }
+
+            btn.addEventListener("click", e => {
+                e.stopPropagation();
+
+                nav.classList.contains("translate-x-full")
+                    ? openMenu()
+                    : closeMenu();
+            });
+
+            document.querySelectorAll("#nav-links a").forEach(link => {
+                link.addEventListener("click", closeMenu);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", initMenu);
+    </script>
 </body>
 
 </html>
