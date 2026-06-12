@@ -174,7 +174,7 @@
 
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="group relative overflow-hidden cursor-pointer border border-[#C5A367]/20"
-                        onclick="window.open('/DGC-REBUILD/images/amen-corner/hole5-1.webp','_blank')">
+                        onclick="openLightbox('/DGC-REBUILD/images/amen-corner/hole5-1.webp')">
                         <img src="/DGC-REBUILD/images/amen-corner/hole5-2.webp"
                             class="w-full h-[520px] md:h-[520px] object-cover transition duration-[1800ms] group-hover:scale-110"
                             width="800" height="520" loading="lazy">
@@ -407,12 +407,26 @@
 
     <script>
         function openLightbox(src) {
+            alert("Lightbox opening");
+
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
 
+            if (!lightbox) {
+                alert("Lightbox div not found");
+                return;
+            }
+
+            if (!img) {
+                alert("Lightbox image not found");
+                return;
+            }
+
             img.src = src;
+
             lightbox.classList.remove('hidden');
-            lightbox.classList.add('flex');
+            lightbox.style.display = 'flex';
+
             document.body.style.overflow = 'hidden';
         }
 
